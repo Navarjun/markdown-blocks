@@ -1,4 +1,5 @@
 const markdown = require('markdown').markdown;
+const ld = require('lodash');
 
 function parser (markdownString) {
     const basicHTML = markdown.toHTML(markdownString);
@@ -24,12 +25,8 @@ function parseRegexOutput (regexMatches) {
         const elementDetails = match[4].replace('[', '').replace(']', '').split('.');
         let attributes = [];
         if (match[5] && match[5] !== '') {
-            match[5].replace('[', '').replace(']', '').split(',').forEach(d => {
-                const attribDetails = d.split('=');
-                attributes.push({
-                    name: decodeURIComponent(attribDetails[0].trim()),
-                    value: decodeURIComponent(attribDetails[1].trim().replace('.', ''))
-                });
+            match[5].replace(/[()]/g, '').split(',').forEach(d => {
+                attributes.push(ld.unescape(d));
             });
         }
         matchesArray.push({
@@ -56,6 +53,7 @@ function parseToHTML (basicString, matchesArray, index = 0) {
 
     const innerString = basicString.substring(match.index + match.fullMatch.length, nextMatch.index);
     const classString = match.classes.join(' ');
+    const attributesString = match.attributes.join(' ')
 
     if (nextMatch.blockLevel <= match.blockLevel) {
         // That's it… just add this to result string
@@ -64,7 +62,7 @@ function parseToHTML (basicString, matchesArray, index = 0) {
         // There are nested blocks
         const nestedString = parseToHTML(basicString, matchesArray, index + 1);
 
-        resultString += `<${match.elementName} class="${classString}">${innerString} ${nestedString}</${match.elementName}>`;
+        resultString += `<${match.elementName} class="${classString}" ${attributesString}>${innerString} ${nestedString}</${match.elementName}>`;
     }
 
     return resultString;
