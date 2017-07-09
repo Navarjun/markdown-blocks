@@ -1,0 +1,37 @@
+{
+  "name": "markdown-blocks",
+  "version": "0.0.1",
+  "description": "The idea of this project is to add html-blocks in markdown format",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Navarjun/markdown-blocks.git"
+  },
+  "keywords": [
+    "markdown",
+    "html",
+    "blocks",
+    "elements",
+    "attributes"
+  ],
+  "author": "Navarjun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Navarjun/markdown-blocks/issues"
+  },
+  "homepage": "https://github.com/Navarjun/markdown-blocks#readme",
+  "dependencies": {
+    "markdown": "^0.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.1.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
+}
