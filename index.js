@@ -14,6 +14,9 @@ function blockParser (basicHTML) {
         regexOutput.push(match);
     }
     const matchesArray = parseRegexOutput(regexOutput);
+    if (matchesArray.length === 0) {
+        return basicHTML;
+    }
     return parseToHTML(basicHTML, matchesArray);
     // return regex.exec(basicHTML);
 }
@@ -53,7 +56,7 @@ function parseToHTML (basicString, matchesArray, index = 0) {
 
     const innerString = basicString.substring(match.index + match.fullMatch.length, nextMatch.index);
     const classString = match.classes.join(' ');
-    const attributesString = match.attributes.join(' ')
+    const attributesString = match.attributes.join(' ');
 
     if (nextMatch.blockLevel <= match.blockLevel) {
         // That's it… just add this to result string

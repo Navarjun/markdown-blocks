@@ -1,6 +1,6 @@
 {
   "name": "markdown-blocks",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The idea of this project is to add html-blocks in markdown format",
   "main": "index.js",
   "scripts": {
