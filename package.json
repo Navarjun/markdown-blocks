@@ -15,7 +15,8 @@
     "html",
     "blocks",
     "elements",
-    "attributes"
+    "attributes",
+    "extension"
   ],
   "author": "Navarjun",
   "license": "MIT",
